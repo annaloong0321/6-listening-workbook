@@ -1,0 +1,1663 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>6.0 IELTS Listening 精听练习册</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Noto+Serif+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f7f4eb;
+    --ink: #1a1f2e;
+    --ink-light: #5a6072;
+    --ink-faint: #9a9eaa;
+    --red: #c73e3a;
+    --red-light: #fdf0ef;
+    --green: #2d6a4f;
+    --green-light: #eaf5f0;
+    --gold: #b7935a;
+    --gold-light: #faf5ed;
+    --blue-speaker: #3a5a8c;
+    --rose-speaker: #8c4a6e;
+    --rule: #d6cfbc;
+    --rule-light: #e5e0d4;
+    --shadow: 0 2px 16px rgba(26,31,46,0.06);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Newsreader', 'Noto Serif SC', Georgia, serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+    background-image:
+      radial-gradient(ellipse at 20% 50%, rgba(183,147,90,0.04) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 20%, rgba(58,90,140,0.03) 0%, transparent 50%);
+    background-attachment: fixed;
+  }
+  body::before {
+    content: '';
+    position: fixed; inset: 0; opacity: 0.025;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 200px 200px;
+    pointer-events: none; z-index: 0;
+  }
+  .app { display: flex; min-height: 100vh; position: relative; z-index: 1; }
+  .sidebar {
+    width: 280px; background: #1c1f2a; color: #b8bcc8;
+    padding: 48px 0 32px;
+    position: fixed; top: 0; left: 0; bottom: 0;
+    overflow-y: auto; z-index: 100;
+    transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
+    border-right: 1px solid rgba(255,255,255,0.06);
+  }
+  .sidebar-header { padding: 0 32px 32px; border-bottom: 1px solid rgba(255,255,255,0.08); margin-bottom: 24px; }
+  .sidebar-header .title { font-family: 'Playfair Display','Noto Serif SC',serif; font-size: 20px; font-weight: 700; color: #e8e4d8; line-height: 1.35; letter-spacing: 0.01em; }
+  .sidebar-header .subtitle { font-family: 'JetBrains Mono',monospace; font-size: 10px; color: #6a6e7a; text-transform: uppercase; letter-spacing: 0.15em; margin-top: 8px; }
+  .sidebar-section { padding: 0 32px; margin-bottom: 8px; }
+  .sidebar-section-label { font-family: 'JetBrains Mono',monospace; font-size: 9px; text-transform: uppercase; letter-spacing: 0.2em; color: #5a5e6a; margin-bottom: 12px; }
+  .sidebar-nav { list-style: none; }
+  .lesson-group { margin-bottom: 2px; }
+  .lesson-toggle {
+    display: flex; align-items: center; gap: 10px; width: 100%;
+    padding: 9px 20px; margin: 0 -20px; border-radius: 6px;
+    color: #c5c8d0; text-decoration: none; font-size: 14px; transition: all 0.2s;
+    background: none; border: none; cursor: pointer; text-align: left;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    -webkit-appearance: none;
+  }
+  .lesson-toggle:hover { color: #d0d2d8; background: rgba(255,255,255,0.03); }
+  .lesson-toggle .num { font-family: 'JetBrains Mono',monospace; font-size: 10px; color: #5a5e6a; min-width: 20px; }
+  .lesson-toggle .arrow { font-size: 8px; margin-left: auto; transition: transform 0.2s; color: #5a5e6a; }
+  .lesson-toggle .arrow.open { transform: rotate(90deg); }
+  .lesson-subs { list-style: none; overflow: hidden; max-height: 0; transition: max-height 0.3s ease; }
+  .lesson-subs.open { max-height: 400px; }
+  .lesson-subs a {
+    display: flex; align-items: center; gap: 6px;
+    padding: 6px 20px 6px 44px; margin: 0 -20px; border-radius: 4px;
+    color: #6a6e7a; text-decoration: none; font-size: 12.5px; transition: all 0.2s;
+  }
+  .lesson-subs a::before { content: '\2014'; color: #4a4e58; font-size: 10px; }
+  .lesson-subs a:hover { color: #b0b4c0; background: rgba(255,255,255,0.02); }
+  .lesson-subs a.active { color: #e8e4d8; background: rgba(255,255,255,0.04); }
+  .lesson-subs a.active::before { color: var(--gold); }
+  .lesson-subs a.disabled { color: #3a3e48; pointer-events: none; }
+  .lesson-toggle.active { color: #e8e4d8; background: rgba(255,255,255,0.06); font-weight: 500; }
+  .lesson-toggle.active .num { color: var(--gold); }
+  .main { margin-left: 280px; flex: 1; padding: 48px 56px; max-width: 900px; }
+  .lesson-section { margin-bottom: 0; }
+  .lesson-divider {
+    border: none; border-top: 1px solid var(--rule);
+    margin: 60px 0 48px; position: relative;
+  }
+  .lesson-divider::after {
+    content: '\2726';
+    position: absolute; top: -10px; left: 50%; transform: translateX(-50%);
+    background: var(--paper); padding: 0 12px; color: var(--gold); font-size: 12px;
+  }
+  .lesson-header { margin-bottom: 40px; }
+  .lesson-meta { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+  .lesson-num {
+    font-family: 'JetBrains Mono',monospace; font-size: 11px; color: var(--gold);
+    text-transform: uppercase; letter-spacing: 0.2em;
+    border: 1px solid var(--gold); padding: 3px 10px; border-radius: 3px;
+  }
+  .lesson-header h2 { font-family: 'Playfair Display','Noto Serif SC',serif; font-size: 36px; font-weight: 700; color: var(--ink); line-height: 1.2; letter-spacing: -0.01em; margin-bottom: 8px; }
+  .lesson-subtitle { font-size: 15px; color: var(--ink-light); font-style: italic; }
+  .anchor-target { display: block; position: relative; height: 1px; }
+  .audio-note {
+    display: flex; align-items: center; gap: 14px;
+    padding: 14px 20px; margin-bottom: 36px;
+    background: var(--gold-light); border-left: 3px solid var(--gold); position: sticky; top: 0; z-index: 50;
+    border-radius: 0 6px 6px 0; font-size: 13px; color: #8b6914;
+  }
+  .audio-note audio { flex: 1; height: 36px; width: 100%; min-width: 200px; filter: sepia(0.2); }
+  .toolbar { display: flex; gap: 12px; margin-bottom: 32px; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 10px 22px; border-radius: 4px;
+    font-family: 'Newsreader','Noto Serif SC',serif;
+    font-size: 14px; font-weight: 500; cursor: pointer;
+    border: 1.5px solid transparent; transition: all 0.2s; letter-spacing: 0.02em;
+  }
+  .btn-practice { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+  .btn-practice:hover { background: #2a3040; }
+  .btn-practice.active { background: #161b28; box-shadow: inset 0 2px 4px rgba(0,0,0,0.3); }
+  .btn-answer { background: transparent; color: var(--red); border-color: var(--red); }
+  .btn-answer:hover { background: var(--red-light); }
+  .btn-answer.showing { background: var(--red); color: #fff; }
+  .btn-reset { background: transparent; color: var(--ink-light); border-color: var(--rule); font-style: italic; }
+  .btn-reset:hover { background: #f5f2e8; }
+  .exercise {
+    background: #fcfaf5; border: 1px solid var(--rule-light);
+    border-radius: 6px; padding: 36px 40px; margin-bottom: 36px;
+    box-shadow: var(--shadow); position: relative;
+  }
+  .exercise::before {
+    content: ''; position: absolute; inset: 0; border-radius: 6px;
+    background-image: repeating-linear-gradient(to bottom, transparent, transparent 31px, var(--rule-light) 31px, var(--rule-light) 32px);
+    pointer-events: none; opacity: 0.5;
+    mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.3) 40px, rgba(0,0,0,0.3) calc(100% - 40px), transparent 100%);
+  }
+  .exercise > * { position: relative; z-index: 1; }
+  .exercise-subtitle { font-size: 16px; font-weight: 600; color: var(--ink); margin-bottom: 4px; }
+  .exercise-instruction {
+    font-size: 14px; color: var(--ink-light); margin-bottom: 32px;
+    padding-bottom: 20px; border-bottom: 1px solid var(--rule); font-style: italic;
+  }
+  .dialogue { margin-bottom: 24px; }
+  .line { padding: 8px 0; font-size: 15.5px; line-height: 2.2; }
+  .speaker {
+    display: inline-block; font-family: 'JetBrains Mono',monospace;
+    font-weight: 500; font-size: 10.5px; text-transform: uppercase;
+    letter-spacing: 0.08em; margin-right: 10px; min-width: 48px;
+    padding: 1px 6px; border-radius: 2px;
+  }
+  .speaker.man { color: var(--blue-speaker); background: rgba(58,90,140,0.06); }
+  .speaker.woman { color: var(--rose-speaker); background: rgba(140,74,110,0.06); }
+  .blank-wrap { display: inline-flex; flex-direction: column; align-items: center; margin: 0 3px; vertical-align: baseline; }
+  .blank-dash {
+    display: inline-block; min-width: 56px; border-bottom: 2px dotted #b8af98;
+    text-align: center; padding: 3px 6px; color: transparent; user-select: none; transition: all 0.2s;
+  }
+  .blank-input {
+    border: none; border-bottom: 2px solid #8a8270;
+    background: rgba(140,130,110,0.04); padding: 4px 8px;
+    font-family: 'Newsreader','Noto Serif SC',Georgia,serif;
+    font-size: 15.5px; color: var(--ink); text-align: center;
+    outline: none; transition: all 0.2s; border-radius: 2px 2px 0 0; min-width: 56px;
+  }
+  .blank-input:focus { border-bottom-color: var(--ink); background: rgba(26,31,46,0.03); }
+  .blank-input.correct { border-bottom-color: var(--green); background: var(--green-light); color: var(--green); font-weight: 600; }
+  .blank-input.wrong { border-bottom-color: var(--red); background: var(--red-light); color: var(--red); }
+  .blank-revealed {
+    display: inline-block; min-width: 56px; padding: 3px 8px; text-align: center;
+    font-weight: 600; color: var(--green); background: var(--green-light);
+    border-radius: 3px; font-size: 14.5px; animation: inkIn 0.35s ease;
+  }
+  @keyframes inkIn { 0% { transform: translateY(-4px); opacity: 0; } 100% { transform: translateY(0); opacity: 1; } }
+  .blank-wrong-revealed {
+    display: inline-flex; align-items: baseline; gap: 6px;
+    min-width: 56px; padding: 3px 8px; font-size: 14.5px;
+  }
+  .blank-wrong-revealed .user-answer { text-decoration: line-through; color: var(--red); text-decoration-color: var(--red); text-decoration-thickness: 2px; }
+  .blank-wrong-revealed .arrow { color: var(--ink-faint); font-size: 12px; }
+  .blank-wrong-revealed .correct-answer { font-weight: 600; color: var(--green); }
+  .q-separator {
+    display: flex; align-items: center; gap: 0;
+    padding: 18px 0 6px 0; margin: 0;
+    font-family: 'JetBrains Mono',monospace; font-size: 10.5px;
+    color: var(--ink-faint); letter-spacing: 0.1em;
+    user-select: none; border: none;
+  }
+  .q-separator::before, .q-separator::after {
+    content: ''; flex: 1;
+    border-bottom: 1.5px dashed var(--rule);
+  }
+  .q-separator span {
+    display: inline-block; padding: 0 14px;
+    color: var(--ink-faint); font-weight: 500; white-space: nowrap;
+  }
+  .qnum { display: none; }
+  .answer-summary { display: none; margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--rule); }
+  .answer-summary.show { display: block; }
+  .answer-summary h4 { font-family: 'JetBrains Mono',monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.2em; color: var(--ink-faint); margin-bottom: 16px; }
+  .answer-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
+  .answer-item { font-family: 'Newsreader','Noto Serif SC',serif; font-size: 14px; padding: 8px 14px; background: var(--green-light); border-radius: 4px; color: var(--green); border-left: 2px solid var(--green); }
+  .answer-item strong { font-family: 'JetBrains Mono',monospace; font-size: 11px; font-weight: 500; margin-right: 6px; }
+  .score-banner { display: none; padding: 14px 20px; border-radius: 4px; margin-bottom: 24px; font-size: 15px; font-weight: 500; font-style: italic; border-left: 3px solid; }
+  .score-banner.show { display: block; }
+  .score-banner.perfect { background: var(--green-light); color: var(--green); border-color: var(--green); }
+  .score-banner.good { background: var(--gold-light); color: #8b6914; border-color: var(--gold); }
+  .score-banner.practice { background: rgba(58,90,140,0.06); color: var(--blue-speaker); border-color: var(--blue-speaker); }
+  .footer { text-align: center; padding: 40px 0; color: var(--ink-faint); font-size: 12px; font-style: italic; opacity: 0.6; }
+  .menu-toggle {
+    display: none; position: fixed; top: 20px; right: 20px; z-index: 200;
+    width: 44px; height: 44px; border-radius: 50%;
+    background: #1c1f2a; color: #e8e4d8;
+    border: 1px solid rgba(255,255,255,0.1); font-size: 18px;
+    cursor: pointer; align-items: center; justify-content: center;
+    box-shadow: 0 8px 40px rgba(26,31,46,0.10);
+  }
+  @media (max-width: 1024px) { .main { padding: 32px 28px; } }
+  @media (max-width: 860px) {
+    .sidebar { transform: translateX(-100%); width: 280px; }
+    .sidebar.open { transform: translateX(0); box-shadow: 4px 0 20px rgba(0,0,0,0.3); }
+    .main { margin-left: 0; padding: 20px 14px; }
+    .menu-toggle { display: flex; }
+    .exercise { padding: 20px 14px; }
+    .exercise::before { display: none; }
+    .audio-note { flex-direction: column; align-items: stretch; position: sticky; top: 0; padding: 10px 14px; margin-bottom: 20px; }
+    .audio-note audio { flex: none; width: 100%; height: 32px; }
+    .lesson-header h2 { font-size: 24px; }
+    .answer-grid { grid-template-columns: repeat(3, 1fr); gap: 6px; }
+    .btn { padding: 8px 14px; font-size: 13px; }
+    .line { font-size: 14px; padding: 6px 0; }
+    .blank-input { font-size: 14px; }
+    .blank-dash { min-width: 40px !important; }
+    .speaker { font-size: 9px; min-width: 40px; margin-right: 6px; }
+    .lesson-num { font-size: 10px; }
+    .anchor-target { top: -60px; }
+  }
+  @media (max-width: 480px) {
+    .main { padding: 16px 10px; }
+    .exercise { padding: 16px 10px; }
+    .lesson-header h2 { font-size: 20px; }
+    .answer-grid { grid-template-columns: repeat(2, 1fr); gap: 4px; }
+    .line { font-size: 13px; line-height: 1.8; }
+    .btn { padding: 6px 12px; font-size: 12px; }
+    .audio-note { padding: 8px 10px; margin-bottom: 16px; }
+    .audio-note audio { height: 28px; }
+  }
+  @media print {
+    .sidebar, .menu-toggle, .toolbar, .audio-note { display: none; }
+    .main { margin-left: 0; padding: 0; }
+    .exercise { box-shadow: none; border: none; padding: 20px 0; }
+    .exercise::before { display: none; }
+    body { background: #fff; }
+    .lesson-divider { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<button class="menu-toggle" onclick="document.querySelector('.sidebar').classList.toggle('open')" aria-label="Menu">&#9776;</button>
+
+<nav class="sidebar">
+  <div class="sidebar-header">
+    <div class="title">6.0 IELTS Listening<br>精听练习册</div>
+    <div class="subtitle">Intensive Listening Workbook</div>
+    <div class="subtitle" style="font-size:9px;color:#6a6e7a;margin-top:4px">如有问题，请查阅使用手册或联系微信（longyao0321）</div>
+  </div>
+  <div class="sidebar-section">
+    <div class="sidebar-section-label">Lessons</div>
+  </div>
+  <ul class="sidebar-nav">
+    <li class="lesson-group">
+      <button class="lesson-toggle active" onclick="toggleLesson(this)"><span class="num">01</span> Lesson 1<span class="arrow open">&#9654;</span></button>
+      <ul class="lesson-subs open">
+        <li><a href="#ex-1a" class="sub-link active">C19T1P1</a></li>
+        <li><a href="#ex-1b" class="sub-link">C17T1P1</a></li>
+      </ul>
+    </li>
+    <li class="lesson-group">
+      <button class="lesson-toggle active" onclick="toggleLesson(this)"><span class="num">02</span> Lesson 2<span class="arrow open">&#9654;</span></button>
+      <ul class="lesson-subs open">
+        <li><a href="#ex-2a" class="sub-link">C19T4P1</a></li>
+        <li><a href="#ex-2b" class="sub-link">C17T2P1</a></li>
+      </ul>
+    </li>
+    <li class="lesson-group">
+      <button class="lesson-toggle active" onclick="toggleLesson(this)"><span class="num">03</span> Lesson 3<span class="arrow open">&#9654;</span></button>
+      <ul class="lesson-subs open">
+        <li><a href="#ex-3a" class="sub-link">C19T1P2</a></li>
+        <li><a href="#ex-3b" class="sub-link">C19T3P2</a></li>
+        <li><a href="#ex-3c" class="sub-link">C19T2P2</a></li>
+      </ul>
+    </li>
+    <li class="lesson-group">
+      <button class="lesson-toggle active" onclick="toggleLesson(this)"><span class="num">04</span> Lesson 4<span class="arrow open">&#9654;</span></button>
+      <ul class="lesson-subs open">
+        <li><a href="#ex-4a" class="sub-link">C19T3P2</a></li>
+        <li><a href="#ex-4b" class="sub-link">C17T3P2</a></li>
+        <li><a href="#ex-4c" class="sub-link">C19T4P2</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+<div class="main">
+
+  <!-- ============ LESSON 1 ============ -->
+  <section class="lesson-section" id="lesson-1">
+    <div class="lesson-header">
+      <div class="lesson-meta">
+        <span class="lesson-num">Lesson 01</span>
+      </div>
+      <h2>填空题</h2>
+    </div>
+
+    <!-- Exercise 1a: C19T1P1 -->
+    <span id="ex-1a" class="anchor-target"></span>
+    <div class="audio-note"><audio controls controlsList="nodownload" data-lesson="1a" data-start="117" data-end="402">
+        <source src="audio/19-1-1.mp3" type="audio/mpeg">
+      </audio>
+    </div>
+    <div class="toolbar" data-lesson="1a">
+      <button class="btn btn-practice" data-lesson="1a" onclick="enterPracticeMode('1a')">&#9998; Fill in the Blanks</button>
+      <button class="btn btn-answer" data-lesson="1a" onclick="showAnswers('1a')">See Answers</button>
+      <button class="btn btn-reset" data-lesson="1a" onclick="resetAll('1a')">Reset</button>
+    </div>
+    <div class="score-banner" id="scoreBanner-1a"></div>
+    <div class="exercise" data-lesson="1a">
+      <div class="exercise-subtitle">C19T1P1</div>
+      <p class="exercise-instruction">Listen and complete the sentences below.</p>
+      <div class="dialogue">
+        <div class="q-separator"><span>Q2</span></div>
+        <div class="line">
+          <span class="speaker woman">Sally</span>
+          The wetland is quite varied, too. The original farmland was dug up around 40 years ago to extract gravel.
+        </div>
+        <div class="line">
+          <span class="speaker woman">Sally</span>
+          Once this work was completed, the gravel pits filled with water, forming the two large
+          <span class="blank-wrap" data-lesson="1a" data-answer="lakes"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>.
+        </div>
+        <div class="line">
+          <span class="speaker woman">Sally</span>
+          There are also several smaller ones,
+          <span class="blank-wrap" data-lesson="1a" data-answer="ponds"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          and a
+          <span class="blank-wrap" data-lesson="1a" data-answer="stream"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          that flows through the park.
+        </div>
+        <div class="q-separator"><span>Q3</span></div>
+        <div class="line" style="margin-top:12px">
+          <span class="speaker woman">Sally</span>
+          Well, one focus is on science, where we help children to discover and study
+          <span class="blank-wrap" data-lesson="1a" data-answer="plants"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>,
+          trees and insects.
+        </div>
+        <div class="line">
+          <span class="speaker woman">Sally</span>
+          They also
+          <span class="blank-wrap" data-lesson="1a" data-answer="collect"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          and
+          <span class="blank-wrap" data-lesson="1a" data-answer="analyse"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          <span class="blank-wrap" data-lesson="1a" data-answer="data"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          about the things they see.
+        </div>
+        <div class="q-separator"><span>Q4</span></div>
+        <div class="line" style="margin-top:12px">
+          <span class="speaker woman">Sally</span>
+          Another focus is on geography. The park is a great environment to learn and
+          <span class="blank-wrap" data-lesson="1a" data-answer="practise"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          reading a
+          <span class="blank-wrap" data-lesson="1a" data-answer="map"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          and using a
+          <span class="blank-wrap" data-lesson="1a" data-answer="compass"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          to navigate around the park.
+        </div>
+        <div class="q-separator"><span>Q5</span></div>
+        <div class="line" style="margin-top:12px">
+          <span class="speaker woman">Sally</span>
+          Yes, we do. For instance, the children can explore how the use of the land has changed over time. Then there's leisure and tourism.
+        </div>
+        <div class="line">
+          <span class="speaker man">John</span>
+          That
+          <span class="blank-wrap" data-lesson="1a" data-answer="focuses"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          on your
+          <span class="blank-wrap" data-lesson="1a" data-answer="visitors"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>,
+          I would imagine.
+        </div>
+        <div class="q-separator"><span>Q6</span></div>
+        <div class="line" style="margin-top:12px">
+          <span class="speaker woman">Sally</span>
+          And another subject we cover is music: here the children experiment with natural materials to
+          <span class="blank-wrap" data-lesson="1a" data-answer="create"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          <span class="blank-wrap" data-lesson="1a" data-answer="sounds"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          and explore
+          <span class="blank-wrap" data-lesson="1a" data-answer="rhythm"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          and tempo.
+        </div>
+        <div class="line">
+          <span class="speaker man">John</span>
+          That must be fun!
+        </div>
+        <div class="q-separator"><span>Q7</span></div>
+        <div class="line" style="margin-top:12px">
+          <span class="speaker woman">Sally</span>
+          And of course, all the activities are educational, too. Learning outside the classroom encourages children to be creative, and to explore and discover for themselves.
+        </div>
+        <div class="line">
+          <span class="speaker man">John</span>
+          I would imagine they get a
+          <span class="blank-wrap" data-lesson="1a" data-answer="sense"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          of
+          <span class="blank-wrap" data-lesson="1a" data-answer="freedom"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          that might not be a normal part of their lives.
+        </div>
+        <div class="q-separator"><span>Q8</span></div>
+        <div class="line" style="margin-top:12px">
+          <span class="speaker woman">Sally</span>
+          That's right. And very often the children discover that they can do things they didn't know they could do, and they
+          <span class="blank-wrap" data-lesson="1a" data-answer="develop"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          <span class="blank-wrap" data-lesson="1a" data-answer="new"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          <span class="blank-wrap" data-lesson="1a" data-answer="skills"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>.
+          This gives them greater self-
+          <span class="blank-wrap" data-lesson="1a" data-answer="confidence"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>.
+        </div>
+        <div class="q-separator"><span>Q10</span></div>
+        <div class="line" style="margin-top:12px">
+          <span class="speaker woman">Sally</span>
+          There's
+          <span class="blank-wrap" data-lesson="1a" data-answer="no"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          <span class="blank-wrap" data-lesson="1a" data-answer="charge"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          for
+          <span class="blank-wrap" data-lesson="1a" data-answer="leaders"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          and other
+          <span class="blank-wrap" data-lesson="1a" data-answer="adults"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          &mdash; as many as you want to bring.
+        </div>
+        <div class="line">
+          <span class="speaker man">John</span>
+          That sounds very fair.
+        </div>
+      </div>
+      <div class="answer-summary" id="answerSummary-1a">
+        <h4>Answer Key</h4>
+        <div class="answer-grid">
+          <div class="answer-item"><strong>1</strong> 69</div>
+          <div class="answer-item"><strong>2</strong> stream</div>
+          <div class="answer-item"><strong>3</strong> data</div>
+          <div class="answer-item"><strong>4</strong> map</div>
+          <div class="answer-item"><strong>5</strong> visitors</div>
+          <div class="answer-item"><strong>6</strong> sounds</div>
+          <div class="answer-item"><strong>7</strong> freedom</div>
+          <div class="answer-item"><strong>8</strong> skills</div>
+          <div class="answer-item"><strong>9</strong> 4.95</div>
+          <div class="answer-item"><strong>10</strong> leaders</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Exercise 1b: C17T1P1 -->
+    <span id="ex-1b" class="anchor-target"></span>
+    <div class="audio-note"><audio controls controlsList="nodownload" data-lesson="1b" data-start="90" data-end="375">
+        <source src="audio/17-1-1.mp3" type="audio/mpeg">
+      </audio>
+    </div>
+    <div class="toolbar" data-lesson="1b">
+      <button class="btn btn-practice" data-lesson="1b" onclick="enterPracticeMode('1b')">&#9998; Fill in the Blanks</button>
+      <button class="btn btn-answer" data-lesson="1b" onclick="showAnswers('1b')">See Answers</button>
+      <button class="btn btn-reset" data-lesson="1b" onclick="resetAll('1b')">Reset</button>
+    </div>
+    <div class="score-banner" id="scoreBanner-1b"></div>
+    <div class="exercise" data-lesson="1b">
+      <div class="exercise-subtitle">C17T1P1</div>
+      <p class="exercise-instruction">Listen and complete the sentences below.</p>
+      <div class="dialogue">
+        <div class="q-separator"><span>Q1</span></div>
+        <div class="line">
+          <span class="speaker man">Peter</span>
+          Of course. Well, we have a mixture of regular activities and special events. One of the regular ones is trying to keep the beach
+          <span class="blank-wrap" data-lesson="1b" data-answer="free"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          of
+          <span class="blank-wrap" data-lesson="1b" data-answer="litter"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>.
+          A few of us spend a couple of hours a month on it, and it's awful how much there is to clear. I wish people would be more responsible and take it home with them.
+        </div>
+        <div class="q-separator"><span>Q2</span></div>
+        <div class="line" style="margin-top:12px">
+          <span class="speaker woman">Jan</span>
+          I totally agree. I'd be happy to help with that. Is it
+          <span class="blank-wrap" data-lesson="1b" data-answer="OK"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          to take
+          <span class="blank-wrap" data-lesson="1b" data-answer="dogs"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>?
+        </div>
+        <div class="line">
+          <span class="speaker man">Peter</span>
+          I'm afraid
+          <span class="blank-wrap" data-lesson="1b" data-answer="not"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>,
+          as they're banned from the beach itself. You can take them along the cliffs, though. And children are welcome.
+        </div>
+        <div class="q-separator"><span>Q3</span></div>
+        <div class="line" style="margin-top:12px">
+          <span class="speaker man">Peter</span>
+          Good. And we have a programme of creating new habitats there. We've just finished making and installing nesting boxes for
+          <span class="blank-wrap" data-lesson="1b" data-answer="birds"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          to use, and next we're going to work on
+          <span class="blank-wrap" data-lesson="1b" data-answer="encouraging"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          <span class="blank-wrap" data-lesson="1b" data-answer="insects"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          &mdash; they're important for the biodiversity of the reserve.
+        </div>
+        <div class="line">
+          <span class="speaker woman">Jan</span>
+          They certainly are.
+        </div>
+        <div class="q-separator"><span>Q4</span></div>
+        <div class="line" style="margin-top:12px">
+          <span class="speaker man">Peter</span>
+          Oh, and we're also running a project to
+          <span class="blank-wrap" data-lesson="1b" data-answer="identify"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          the different
+          <span class="blank-wrap" data-lesson="1b" data-answer="species"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          of
+          <span class="blank-wrap" data-lesson="1b" data-answer="butterflies"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          that visit the reserve. You might be interested in taking part in that.
+        </div>
+        <div class="q-separator"><span>Q5</span></div>
+        <div class="line" style="margin-top:12px">
+          <span class="speaker man">Peter</span>
+          Another job we're doing at the reserve is
+          <span class="blank-wrap" data-lesson="1b" data-answer="replacing"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          the
+          <span class="blank-wrap" data-lesson="1b" data-answer="wall"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          on the southern side, between the parking area and our woodshed. It was badly damaged in a storm last month.
+        </div>
+        <div class="q-separator"><span>Q6</span></div>
+        <div class="line" style="margin-top:12px">
+          <span class="speaker man">Peter</span>
+          Yes, we do. The next walk is to Ruston Island, a week on Saturday. We'll be meeting in the car park at Dunsmore Beach at low tide &mdash; that's when the
+          <span class="blank-wrap" data-lesson="1b" data-answer="sands"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          are dry enough for us to
+          <span class="blank-wrap" data-lesson="1b" data-answer="walk"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          to
+          <span class="blank-wrap" data-lesson="1b" data-answer="the"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          <span class="blank-wrap" data-lesson="1b" data-answer="island"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          without getting wet.
+        </div>
+        <div class="line">
+          <span class="speaker woman">Jan</span>
+          Sounds good.
+        </div>
+        <div class="q-separator"><span>Q7</span></div>
+        <div class="line" style="margin-top:12px">
+          <span class="speaker man">Peter</span>
+          Yes, do bring one, as it's a full-day walk. And of course it'll be wet walking across and back, so make sure your
+          <span class="blank-wrap" data-lesson="1b" data-answer="boots"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          are
+          <span class="blank-wrap" data-lesson="1b" data-answer="waterproof"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>.
+        </div>
+        <div class="q-separator"><span>Q8</span></div>
+        <div class="line" style="margin-top:12px">
+          <span class="speaker woman">Jan</span>
+          I've never tried that before. Is it
+          <span class="blank-wrap" data-lesson="1b" data-answer="OK"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          for
+          <span class="blank-wrap" data-lesson="1b" data-answer="beginners"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          to
+          <span class="blank-wrap" data-lesson="1b" data-answer="take"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          <span class="blank-wrap" data-lesson="1b" data-answer="part"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>?
+        </div>
+        <div class="line">
+          <span class="speaker man">Peter</span>
+          <span class="blank-wrap" data-lesson="1b" data-answer="Definitely"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>.
+          There'll be a couple of experts leading the session, and we keep the number of participants down, so you'll get as much help as you need.
+        </div>
+        <div class="q-separator"><span>Q9</span></div>
+        <div class="line" style="margin-top:12px">
+          <span class="speaker woman">Jan</span>
+          Excellent! I'd love to be able to make
+          <span class="blank-wrap" data-lesson="1b" data-answer="chairs"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>.
+        </div>
+        <div class="line">
+          <span class="speaker man">Peter</span>
+          That's probably
+          <span class="blank-wrap" data-lesson="1b" data-answer="too"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          ambitious for one day! You'll be
+          <span class="blank-wrap" data-lesson="1b" data-answer="starting"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          with
+          <span class="blank-wrap" data-lesson="1b" data-answer="wooden"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          <span class="blank-wrap" data-lesson="1b" data-answer="spoons"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>,
+          and of course learning how to use the tools. And anything you make is yours to take home with you.
+        </div>
+        <div class="q-separator"><span>Q10</span></div>
+        <div class="line" style="margin-top:12px">
+          <span class="speaker man">Peter</span>
+          It's on the 17th, from 10 a.m. until 3. There's a charge of &pound;
+          <span class="blank-wrap" data-lesson="1b" data-answer="35"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;</span></span>,
+          including lunch, or &pound;
+          <span class="blank-wrap" data-lesson="1b" data-answer="40"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          if you
+          <span class="blank-wrap" data-lesson="1b" data-answer="want"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          to
+          <span class="blank-wrap" data-lesson="1b" data-answer="camp"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          in the wood.
+        </div>
+        <div class="line">
+          <span class="speaker woman">Jan</span>
+          I should think I'll come home the same day. Well, I'd certainly like to join the group.
+        </div>
+      </div>
+      <div class="answer-summary" id="answerSummary-1b">
+        <h4>Answer Key</h4>
+        <div class="answer-grid">
+          <div class="answer-item"><strong>1</strong> litter</div>
+          <div class="answer-item"><strong>2</strong> dogs</div>
+          <div class="answer-item"><strong>3</strong> insects</div>
+          <div class="answer-item"><strong>4</strong> butterflies</div>
+          <div class="answer-item"><strong>5</strong> wall</div>
+          <div class="answer-item"><strong>6</strong> island</div>
+          <div class="answer-item"><strong>7</strong> boots</div>
+          <div class="answer-item"><strong>8</strong> beginners</div>
+          <div class="answer-item"><strong>9</strong> spoons</div>
+          <div class="answer-item"><strong>10</strong> 35</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ LESSON 2 ============ -->
+  <hr class="lesson-divider">
+
+  <section class="lesson-section" id="lesson-2">
+    <div class="lesson-header">
+      <div class="lesson-meta">
+        <span class="lesson-num">Lesson 02</span>
+      </div>
+      <h2>填空题</h2>
+    </div>
+
+    <!-- Exercise 2a: C19T4P1 -->
+    <span id="ex-2a" class="anchor-target"></span>
+    <div class="audio-note"><audio controls controlsList="nodownload" data-lesson="2a" data-start="92" data-end="385">
+        <source src="audio/19-4-1.mp3" type="audio/mpeg">
+      </audio>
+    </div>
+    <div class="toolbar" data-lesson="2a">
+      <button class="btn btn-practice" data-lesson="2a" onclick="enterPracticeMode('2a')">&#9998; Fill in the Blanks</button>
+      <button class="btn btn-answer" data-lesson="2a" onclick="showAnswers('2a')">See Answers</button>
+      <button class="btn btn-reset" data-lesson="2a" onclick="resetAll('2a')">Reset</button>
+    </div>
+    <div class="score-banner" id="scoreBanner-2a"></div>
+    <div class="exercise" data-lesson="2a">
+      <div class="exercise-subtitle">C19T4P1</div>
+      <p class="exercise-instruction">Listen and complete the sentences below.</p>
+      <div class="dialogue">
+        <div class="q-separator"><span>Q2</span></div>
+        <div class="line">
+          <span class="speaker man">Kaeden</span>
+          So, after you've finished at the front desk, I'll take you to the staffroom. Put your
+          <span class="blank-wrap" data-lesson="2a" data-answer="coat"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          and rucksack in one of the
+          <span class="blank-wrap" data-lesson="2a" data-answer="lockers"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          there. Take whichever one is free.
+        </div>
+        <div class="q-separator"><span>Q3</span></div>
+        <div class="line" style="margin-top:12px">
+          <span class="speaker woman">Charlotte</span>
+          I was told to bring my
+          <span class="blank-wrap" data-lesson="2a" data-answer="passport"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          with me. HR need to take a note of the
+          <span class="blank-wrap" data-lesson="2a" data-answer="number"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          in it.
+        </div>
+        <div class="line">
+          <span class="speaker man">Kaeden</span>
+          That's right. Or you can show your
+          <span class="blank-wrap" data-lesson="2a" data-answer="ID"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          card.
+        </div>
+        <div class="line">
+          <span class="speaker woman">Charlotte</span>
+          I
+          <span class="blank-wrap" data-lesson="2a" data-answer="don't"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          have one of those.
+        </div>
+        <div class="q-separator"><span>Q4</span></div>
+        <div class="line" style="margin-top:12px">
+          <span class="speaker man">Kaeden</span>
+          OK. Tiffany will
+          <span class="blank-wrap" data-lesson="2a" data-answer="give"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          you a
+          <span class="blank-wrap" data-lesson="2a" data-answer="uniform"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>.
+          They have lots in different sizes, so you just tell her what you need.
+        </div>
+        <div class="q-separator"><span>Q5</span></div>
+        <div class="line" style="margin-top:12px">
+          <span class="speaker woman">Charlotte</span>
+          Is the HR office near the staffroom?
+        </div>
+        <div class="line">
+          <span class="speaker man">Kaeden</span>
+          The
+          <span class="blank-wrap" data-lesson="2a" data-answer="staffroom"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>&apos;s on the
+          <span class="blank-wrap" data-lesson="2a" data-answer="first"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          floor, and
+          <span class="blank-wrap" data-lesson="2a" data-answer="HR"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          are a couple of floors above that, on the
+          <span class="blank-wrap" data-lesson="2a" data-answer="third"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          floor. There's a staircase outside the staffroom.
+        </div>
+        <div class="q-separator"><span>Q7</span></div>
+        <div class="line" style="margin-top:12px">
+          <span class="speaker man">Kaeden</span>
+          The first job is to check
+          <span class="blank-wrap" data-lesson="2a" data-answer="sell"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>-<span class="blank-wrap" data-lesson="2a" data-answer="by"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          dates on the bread and cakes. If any of the dates are today's, put a
+          <span class="blank-wrap" data-lesson="2a" data-answer="new"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          <span class="blank-wrap" data-lesson="2a" data-answer="price"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          <span class="blank-wrap" data-lesson="2a" data-answer="label"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          on the packaging.
+        </div>
+        <div class="line">
+          <span class="speaker woman">Charlotte</span>
+          What if any of the labels are yesterday's dates, or older? Do I throw those items away?
+        </div>
+        <div class="line">
+          <span class="speaker man">Kaeden</span>
+          Yes, but that shouldn't happen &mdash; we check the stock every day. When something needs a
+          <span class="blank-wrap" data-lesson="2a" data-answer="new"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          <span class="blank-wrap" data-lesson="2a" data-answer="price"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          label, put a
+          <span class="blank-wrap" data-lesson="2a" data-answer="yellow"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          one on the package, next to the original price.
+        </div>
+        <div class="q-separator"><span>Q8</span></div>
+        <div class="line" style="margin-top:12px">
+          <span class="speaker man">Kaeden</span>
+          You'll see lots of flat cardboard boxes at one end of the counter.
+        </div>
+        <div class="line">
+          <span class="speaker man">Kaeden</span>
+          Beneath those is where we keep the
+          <span class="blank-wrap" data-lesson="2a" data-answer="plastic"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          <span class="blank-wrap" data-lesson="2a" data-answer="boxes"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          &mdash; we run out of those really quickly, so you should
+          <span class="blank-wrap" data-lesson="2a" data-answer="bring"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          <span class="blank-wrap" data-lesson="2a" data-answer="more"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          from the storeroom.
+        </div>
+        <div class="q-separator"><span>Q9</span></div>
+        <div class="line" style="margin-top:12px">
+          <span class="speaker woman">Charlotte</span>
+          OK. Anything else?
+        </div>
+        <div class="line">
+          <span class="speaker man">Kaeden</span>
+          The
+          <span class="blank-wrap" data-lesson="2a" data-answer="fish"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          is laid on
+          <span class="blank-wrap" data-lesson="2a" data-answer="ice"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>,
+          but when that starts to melt, you'll need to
+          <span class="blank-wrap" data-lesson="2a" data-answer="get"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          <span class="blank-wrap" data-lesson="2a" data-answer="more"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          from the
+          <span class="blank-wrap" data-lesson="2a" data-answer="cold"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>-<span class="blank-wrap" data-lesson="2a" data-answer="room"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>.
+        </div>
+        <div class="q-separator"><span>Q10</span></div>
+        <div class="line" style="margin-top:12px">
+          <span class="speaker woman">Charlotte</span>
+          I know the staff on the food counters
+          <span class="blank-wrap" data-lesson="2a" data-answer="wear"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          a
+          <span class="blank-wrap" data-lesson="2a" data-answer="hat"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>.
+          Will that be the same for me?
+        </div>
+        <div class="line">
+          <span class="speaker man">Kaeden</span>
+          You won't be serving customers directly, so
+          <span class="blank-wrap" data-lesson="2a" data-answer="no"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;</span></span>.
+        </div>
+        <div class="line">
+          <span class="speaker man">Kaeden</span>
+          But
+          <span class="blank-wrap" data-lesson="2a" data-answer="make"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          <span class="blank-wrap" data-lesson="2a" data-answer="sure"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          you put on thermal
+          <span class="blank-wrap" data-lesson="2a" data-answer="gloves"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          when you take anything out of the cold-room. The temperature's low enough in there to get frostbite from touching things.
+        </div>
+        <div class="line">
+          <span class="speaker woman">Charlotte</span>
+          Understood.
+        </div>
+      </div>
+      <div class="answer-summary" id="answerSummary-2a">
+        <h4>Answer Key</h4>
+        <div class="answer-grid">
+          <div class="answer-item"><strong>1</strong> Kaeden</div>
+          <div class="answer-item"><strong>2</strong> lockers</div>
+          <div class="answer-item"><strong>3</strong> passport</div>
+          <div class="answer-item"><strong>4</strong> uniform</div>
+          <div class="answer-item"><strong>5</strong> third</div>
+          <div class="answer-item"><strong>6</strong> 0412 665 903</div>
+          <div class="answer-item"><strong>7</strong> yellow</div>
+          <div class="answer-item"><strong>8</strong> plastic</div>
+          <div class="answer-item"><strong>9</strong> ice</div>
+          <div class="answer-item"><strong>10</strong> gloves</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Exercise 2b: C17T2P1 -->
+    <span id="ex-2b" class="anchor-target"></span>
+    <div class="audio-note"><audio controls controlsList="nodownload" data-lesson="2b" data-start="89" data-end="435">
+        <source src="audio/17-2-1.mp3" type="audio/mpeg">
+      </audio>
+    </div>
+    <div class="toolbar" data-lesson="2b">
+      <button class="btn btn-practice" data-lesson="2b" onclick="enterPracticeMode('2b')">&#9998; Fill in the Blanks</button>
+      <button class="btn btn-answer" data-lesson="2b" onclick="showAnswers('2b')">See Answers</button>
+      <button class="btn btn-reset" data-lesson="2b" onclick="resetAll('2b')">Reset</button>
+    </div>
+    <div class="score-banner" id="scoreBanner-2b"></div>
+    <div class="exercise" data-lesson="2b">
+      <div class="exercise-subtitle">C17T2P1</div>
+      <p class="exercise-instruction">Listen and complete the sentences below.</p>
+      <div class="dialogue">
+        <div class="q-separator"><span>Q1</span></div>
+        <div class="line">
+          <span class="speaker man">Frank</span>
+          What sort of thing could I do?
+        </div>
+        <div class="line">
+          <span class="speaker woman">Jane</span>
+          Well, we need help with the village library. We borrow
+          <span class="blank-wrap" data-lesson="2b" data-answer="books"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          from the town library, and individuals also donate them. So, one thing you could do is get involved in
+          <span class="blank-wrap" data-lesson="2b" data-answer="collecting"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          them &mdash; if you've got a car, that is.
+        </div>
+        <div class="line">
+          <span class="speaker man">Frank</span>
+          Yes, that's no problem.
+        </div>
+        <div class="line">
+          <span class="speaker woman">Jane</span>
+          The
+          <span class="blank-wrap" data-lesson="2b" data-answer="times"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          are pretty flexible so we can arrange it to suit you.
+        </div>
+        <div class="q-separator"><span>Q2</span></div>
+        <div class="line" style="margin-top:12px">
+          <span class="speaker woman">Jane</span>
+          Another thing is the
+          <span class="blank-wrap" data-lesson="2b" data-answer="records"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          that we keep of the
+          <span class="blank-wrap" data-lesson="2b" data-answer="books"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          we're given, and those we borrow and need to return to the town library. It would be very useful to have another person to help keep them up to date.
+        </div>
+        <div class="q-separator"><span>Q3</span></div>
+        <div class="line" style="margin-top:12px">
+          <span class="speaker woman">Jane</span>
+          No, we simply have the use of a room in the village hall, the
+          <span class="blank-wrap" data-lesson="2b" data-answer="West"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          Room. It's on the left as you go in.
+        </div>
+        <div class="q-separator"><span>Q4</span></div>
+        <div class="line" style="margin-top:12px">
+          <span class="speaker man">Frank</span>
+          I could help with
+          <span class="blank-wrap" data-lesson="2b" data-answer="transport"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>,
+          if that's of any use.
+        </div>
+        <div class="line">
+          <span class="speaker woman">Jane</span>
+          Ooo
+          <span class="blank-wrap" data-lesson="2b" data-answer="definitely"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>.
+          People come to the club from neighbouring villages, and we're always in need of more drivers.
+        </div>
+        <div class="q-separator"><span>Q5</span></div>
+        <div class="line" style="margin-top:12px">
+          <span class="speaker man">Frank</span>
+          And does the club have groups that focus on a particular
+          <span class="blank-wrap" data-lesson="2b" data-answer="hobby"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>,
+          too? I could get involved in one or two, particularly if there are any
+          <span class="blank-wrap" data-lesson="2b" data-answer="art"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          groups.
+        </div>
+        <div class="line">
+          <span class="speaker woman">Jane</span>
+          Excellent. I'll find out where we need help and get back to you.
+        </div>
+        <div class="q-separator"><span>Q6</span></div>
+        <div class="line" style="margin-top:12px">
+          <span class="speaker woman">Jane</span>
+          Yes, we do it as a one-off. In fact, there's Mrs. Carroll. She needs a
+          <span class="blank-wrap" data-lesson="2b" data-answer="lift"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          to the
+          <span class="blank-wrap" data-lesson="2b" data-answer="hospital"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          next week, and we're struggling to find someone.
+        </div>
+        <div class="q-separator"><span>Q7</span></div>
+        <div class="line" style="margin-top:12px">
+          <span class="speaker woman">Jane</span>
+          Oh, that would be great. Thank you. And also, next week, we're arranging to have some work done to Mr. Selsbury's house before he moves, as he isn't healthy enough to do it himself. We've got some people to decorate his
+          <span class="blank-wrap" data-lesson="2b" data-answer="kitchen"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>,
+          but if you could do some weeding in his
+          <span class="blank-wrap" data-lesson="2b" data-answer="garden"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>,
+          that would be wonderful.
+        </div>
+        <div class="line">
+          <span class="speaker man">Frank</span>
+          OK. I'd enjoy that.
+        </div>
+        <div class="q-separator"><span>Q8</span></div>
+        <div class="line" style="margin-top:12px">
+          <span class="speaker woman">Jane</span>
+          So next month, on the 19th of October, we're holding a
+          <span class="blank-wrap" data-lesson="2b" data-answer="quiz"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          &mdash; a couple of residents are great at planning unusual ones, and we always fill the village hall.
+        </div>
+        <div class="q-separator"><span>Q9</span></div>
+        <div class="line" style="margin-top:12px">
+          <span class="speaker man">Frank</span>
+          I'm not really a dancer, but I'd like to do something to help.
+        </div>
+        <div class="line">
+          <span class="speaker woman">Jane</span>
+          Well, we sell
+          <span class="blank-wrap" data-lesson="2b" data-answer="tickets"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          in advance, and having an extra person to check them at the door, as people arrive, would be good &mdash; it can be quite a bottleneck if everyone arrives at once!
+        </div>
+        <div class="line">
+          <span class="speaker man">Frank</span>
+          OK, I'm happy with that.
+        </div>
+        <div class="q-separator"><span>Q10</span></div>
+        <div class="line" style="margin-top:12px">
+          <span class="speaker woman">Jane</span>
+          The hotel will be providing dinner and we've booked a band. The one thing we
+          <span class="blank-wrap" data-lesson="2b" data-answer="haven't"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          got yet is a
+          <span class="blank-wrap" data-lesson="2b" data-answer="poster"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>.
+          That isn't something you could do, by any chance, is it?
+        </div>
+        <div class="line">
+          <span class="speaker man">Frank</span>
+          Well actually,
+          <span class="blank-wrap" data-lesson="2b" data-answer="yes"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>.
+        </div>
+      </div>
+      <div class="answer-summary" id="answerSummary-2b">
+        <h4>Answer Key</h4>
+        <div class="answer-grid">
+          <div class="answer-item"><strong>1</strong> collecting</div>
+          <div class="answer-item"><strong>2</strong> records</div>
+          <div class="answer-item"><strong>3</strong> West</div>
+          <div class="answer-item"><strong>4</strong> transport</div>
+          <div class="answer-item"><strong>5</strong> art</div>
+          <div class="answer-item"><strong>6</strong> hospital</div>
+          <div class="answer-item"><strong>7</strong> garden</div>
+          <div class="answer-item"><strong>8</strong> quiz</div>
+          <div class="answer-item"><strong>9</strong> tickets</div>
+          <div class="answer-item"><strong>10</strong> poster</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============ LESSON 3 ============ -->
+  <hr class="lesson-divider">
+
+  <section class="lesson-section" id="lesson-3">
+    <div class="lesson-header">
+      <div class="lesson-meta">
+        <span class="lesson-num">Lesson 03</span>
+      </div>
+      <h2>单选题 / 多选题</h2>
+    </div>
+
+    <!-- Exercise 3a: C19T1P2 -->
+    <span id="ex-3a" class="anchor-target"></span>
+    <div class="audio-note"><audio controls controlsList="nodownload" data-lesson="3a" data-start="62" data-end="236">
+        <source src="audio/19-1-2.mp3" type="audio/mpeg">
+      </audio>
+    </div>
+    <div class="toolbar" data-lesson="3a">
+      <button class="btn btn-practice" data-lesson="3a" onclick="enterPracticeMode('3a')">&#9998; Fill in the Blanks</button>
+      <button class="btn btn-answer" data-lesson="3a" onclick="showAnswers('3a')">See Answers</button>
+      <button class="btn btn-reset" data-lesson="3a" onclick="resetAll('3a')">Reset</button>
+    </div>
+    <div class="score-banner" id="scoreBanner-3a"></div>
+    <div class="exercise" data-lesson="3a">
+      <div class="exercise-subtitle">C19T1P2</div>
+      <p class="exercise-instruction">Listen and complete the sentences below.</p>
+      <div class="dialogue">
+        <div class="q-separator"><span>Q1</span></div>
+        <div class="line">
+          We learned how
+          <span class="blank-wrap" data-lesson="3a" data-answer="cheese"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          is produced in the region and had the chance to taste the products. The
+          <span class="blank-wrap" data-lesson="3a" data-answer="theme"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          <span class="blank-wrap" data-lesson="3a" data-answer="park"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          trip had to be
+          <span class="blank-wrap" data-lesson="3a" data-answer="cancelled"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>,
+          but we all had a
+          <span class="blank-wrap" data-lesson="3a" data-answer="great"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          <span class="blank-wrap" data-lesson="3a" data-answer="time"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          on the final
+          <span class="blank-wrap" data-lesson="3a" data-answer="boat"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          <span class="blank-wrap" data-lesson="3a" data-answer="trip"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          down the river &mdash; that was the real highlight.
+        </div>
+        <div class="q-separator"><span>Q2</span></div>
+        <div class="line" style="margin-top:12px">
+          In
+          <span class="blank-wrap" data-lesson="3a" data-answer="Malatte"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>,
+          they're planning to mark this by building a
+          <span class="blank-wrap" data-lesson="3a" data-answer="footbridge"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          in the municipal park. We've been discussing what to do here and we've
+          <span class="blank-wrap" data-lesson="3a" data-answer="decided"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          to plant a poplar
+          <span class="blank-wrap" data-lesson="3a" data-answer="tree"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          in the museum gardens. We
+          <span class="blank-wrap" data-lesson="3a" data-answer="considered"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          buying a garden
+          <span class="blank-wrap" data-lesson="3a" data-answer="seat"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          to put there,
+          <span class="blank-wrap" data-lesson="3a" data-answer="but"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          the authorities
+          <span class="blank-wrap" data-lesson="3a" data-answer="weren't"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          happy with that idea.
+        </div>
+        <div class="q-separator"><span>Q3</span></div>
+        <div class="line" style="margin-top:12px">
+          In terms of fundraising to support our activities, we've done very well. Our
+          <span class="blank-wrap" data-lesson="3a" data-answer="pancake"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          evening was well attended and made
+          <span class="blank-wrap" data-lesson="3a" data-answer="record"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          <span class="blank-wrap" data-lesson="3a" data-answer="profits"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>.
+          And everyone enjoyed the demonstration of French
+          <span class="blank-wrap" data-lesson="3a" data-answer="cookery"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>,
+          which was nearly as
+          <span class="blank-wrap" data-lesson="3a" data-answer="successful"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>.
+          Numbers for our
+          <span class="blank-wrap" data-lesson="3a" data-answer="film"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          show were limited because of the venue so we're looking for
+          <span class="blank-wrap" data-lesson="3a" data-answer="somewhere"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          <span class="blank-wrap" data-lesson="3a" data-answer="bigger"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          next year.
+        </div>
+        <div class="q-separator"><span>Q4</span></div>
+        <div class="line" style="margin-top:12px">
+          We're looking forward to welcoming our French visitors here next week, and I know that many of you here will be hosting individuals or families. The coach from France will arrive at 5 pm on Friday. Don't try to do too much that first evening as they'll be tired, so have
+          <span class="blank-wrap" data-lesson="3a" data-answer="dinner"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          in the
+          <span class="blank-wrap" data-lesson="3a" data-answer="house"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          or garden
+          <span class="blank-wrap" data-lesson="3a" data-answer="rather"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          <span class="blank-wrap" data-lesson="3a" data-answer="than"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          <span class="blank-wrap" data-lesson="3a" data-answer="eating"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          out. The weather looks as if it'll be OK so you might like to plan a barbecue. Then the next morning's market day in town, and that's always a good place to stroll round.
+        </div>
+        <div class="q-separator"><span>Q5</span></div>
+        <div class="line" style="margin-top:12px">
+          On Saturday evening, we'll all meet up at the football club, where once again we'll have Toby Sharp and his
+          <span class="blank-wrap" data-lesson="3a" data-answer="band"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          performing English and Scottish country
+          <span class="blank-wrap" data-lesson="3a" data-answer="songs"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>.
+          Toby will already be well known to many of you as
+          <span class="blank-wrap" data-lesson="3a" data-answer="last"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          <span class="blank-wrap" data-lesson="3a" data-answer="year"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          he organised our special
+          <span class="blank-wrap" data-lesson="3a" data-answer="quiz"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          night and presented the prizes.
+        </div>
+      </div>
+      <div class="answer-summary" id="answerSummary-3a">
+        <h4>Answer Key</h4>
+        <div class="answer-grid">
+          <div class="answer-item"><strong>1</strong> B</div>
+          <div class="answer-item"><strong>2</strong> A</div>
+          <div class="answer-item"><strong>3</strong> B</div>
+          <div class="answer-item"><strong>4</strong> C</div>
+          <div class="answer-item"><strong>5</strong> A</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Exercise 3b: C19T3P2 -->
+    <span id="ex-3b" class="anchor-target"></span>
+    <div class="audio-note"><audio controls controlsList="nodownload" data-lesson="3b" data-start="233" data-end="356">
+        <source src="audio/19-3-2.mp3" type="audio/mpeg">
+      </audio>
+    </div>
+    <div class="toolbar" data-lesson="3b">
+      <button class="btn btn-practice" data-lesson="3b" onclick="enterPracticeMode('3b')">&#9998; Fill in the Blanks</button>
+      <button class="btn btn-answer" data-lesson="3b" onclick="showAnswers('3b')">See Answers</button>
+      <button class="btn btn-reset" data-lesson="3b" onclick="resetAll('3b')">Reset</button>
+    </div>
+    <div class="score-banner" id="scoreBanner-3b"></div>
+    <div class="exercise" data-lesson="3b">
+      <div class="exercise-subtitle">C19T3P2</div>
+      <p class="exercise-instruction">Listen and complete the sentences below.</p>
+      <div class="dialogue">
+        <div class="q-separator"><span>Q17&amp;18</span></div>
+        <div class="line">
+          <span class="speaker woman">Jenny</span>
+          It's hard to choose, but Alive and Kicking is definitely worth mentioning. You
+          <span class="blank-wrap" data-lesson="3b" data-answer="won't"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          have
+          <span class="blank-wrap" data-lesson="3b" data-answer="heard"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          of the
+          <span class="blank-wrap" data-lesson="3b" data-answer="writer"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          as it's her
+          <span class="blank-wrap" data-lesson="3b" data-answer="first"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          book &mdash; which is really impressive. It's basically the teenage diary of a boy from Somalia who comes to live in the UK. It
+          <span class="blank-wrap" data-lesson="3b" data-answer="deals"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          with the
+          <span class="blank-wrap" data-lesson="3b" data-answer="serious"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          issue of immigration and all the challenges the boy has to face at school and with the language barrier, etc. Usually, books like this are quite sad, but this one actually made me cry with laughter. On each page, there are funny
+          <span class="blank-wrap" data-lesson="3b" data-answer="cartoons"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>.
+        </div>
+        <div class="q-separator"><span>Q19&amp;20</span></div>
+        <div class="line" style="margin-top:12px">
+          <span class="speaker woman">Jenny</span>
+          Well, this is something I get asked about a lot. There are so many distractions for kids these days that it can be hard to find time for reading. One thing I'd say is to make time to sit down with your child and share books with them. A lot of parents
+          <span class="blank-wrap" data-lesson="3b" data-answer="give"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          <span class="blank-wrap" data-lesson="3b" data-answer="up"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          reading aloud to their children as soon as they learn to read
+          <span class="blank-wrap" data-lesson="3b" data-answer="independently"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>,
+          <span class="blank-wrap" data-lesson="3b" data-answer="but"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          this is a mistake. It's good to
+          <span class="blank-wrap" data-lesson="3b" data-answer="read"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          more advanced books to them as it helps to develop their vocabulary. If you don't have time for this, then let them listen to audio books instead.
+        </div>
+      </div>
+      <div class="answer-summary" id="answerSummary-3b">
+        <h4>Answer Key</h4>
+        <div class="answer-grid">
+          <div class="answer-item"><strong>17&amp;18</strong> BC</div>
+          <div class="answer-item"><strong>19&amp;20</strong> DE</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Exercise 3c: C19T2P2 -->
+    <span id="ex-3c" class="anchor-target"></span>
+    <div class="audio-note"><audio controls controlsList="nodownload" data-lesson="3c" data-start="263" data-end="359">
+        <source src="audio/19-2-2.mp3" type="audio/mpeg">
+      </audio>
+    </div>
+    <div class="toolbar" data-lesson="3c">
+      <button class="btn btn-practice" data-lesson="3c" onclick="enterPracticeMode('3c')">&#9998; Fill in the Blanks</button>
+      <button class="btn btn-answer" data-lesson="3c" onclick="showAnswers('3c')">See Answers</button>
+      <button class="btn btn-reset" data-lesson="3c" onclick="resetAll('3c')">Reset</button>
+    </div>
+    <div class="score-banner" id="scoreBanner-3c"></div>
+    <div class="exercise" data-lesson="3c">
+      <div class="exercise-subtitle">C19T2P2</div>
+      <p class="exercise-instruction">Listen and complete the sentences below.</p>
+      <div class="dialogue">
+        <div class="q-separator"><span>Q17&amp;18</span></div>
+        <div class="line">
+          The training we get is a continuous process, focusing on technical competence and safe handling techniques, and it's given me the
+          <span class="blank-wrap" data-lesson="3c" data-answer="confidence"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          to deal with extreme situations
+          <span class="blank-wrap" data-lesson="3c" data-answer="without"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          panicking. I was glad I'd done a first aid course before I started, as that's a
+          <span class="blank-wrap" data-lesson="3c" data-answer="big"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          <span class="blank-wrap" data-lesson="3c" data-answer="help"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          with the casualty care activities we do. We've done
+          <span class="blank-wrap" data-lesson="3c" data-answer="a"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          <span class="blank-wrap" data-lesson="3c" data-answer="lot"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          on how to deal with ropes and tie knots &mdash; that's an essential skill. After a year, I did a one-week residential course, led by specialists. They had a wave-tank where they could
+          <span class="blank-wrap" data-lesson="3c" data-answer="simulate"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          storm conditions.
+        </div>
+        <div class="q-separator"><span>Q19&amp;20</span></div>
+        <div class="line" style="margin-top:12px">
+          Since I started, I've had to deal with a range of emergency situations. But the work's
+          <span class="blank-wrap" data-lesson="3c" data-answer="hugely"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          <span class="blank-wrap" data-lesson="3c" data-answer="motivating"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>.
+          It's
+          <span class="blank-wrap" data-lesson="3c" data-answer="not"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          just about
+          <span class="blank-wrap" data-lesson="3c" data-answer="saving"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          <span class="blank-wrap" data-lesson="3c" data-answer="lives"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          &mdash; I've learned a lot about the
+          <span class="blank-wrap" data-lesson="3c" data-answer="technology"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          involved. My background in IT's been useful here, and I can use my expertise to help other volunteers. They're a great group &mdash; we're like a family really, which helps when you're dragging yourself out of bed on a cold stormy night. But actually, it's the colder months that can be the most
+          <span class="blank-wrap" data-lesson="3c" data-answer="rewarding"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          time. That's when there are more
+          <span class="blank-wrap" data-lesson="3c" data-answer="call"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>-outs.
+        </div>
+      </div>
+      <div class="answer-summary" id="answerSummary-3c">
+        <h4>Answer Key</h4>
+        <div class="answer-grid">
+          <div class="answer-item"><strong>17&amp;18</strong> CE</div>
+          <div class="answer-item"><strong>19&amp;20</strong> AB</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ LESSON 4 ============ -->
+  <hr class="lesson-divider">
+
+  <section class="lesson-section" id="lesson-4">
+    <div class="lesson-header">
+      <div class="lesson-meta">
+        <span class="lesson-num">Lesson 04</span>
+      </div>
+      <h2>匹配题</h2>
+    </div>
+
+    <!-- Exercise 4a: C19T3P2 -->
+    <span id="ex-4a" class="anchor-target"></span>
+    <div class="audio-note"><audio controls controlsList="nodownload" data-lesson="4a" data-start="53" data-end="198">
+        <source src="audio/19-3-2.mp3" type="audio/mpeg">
+      </audio>
+    </div>
+    <div class="toolbar" data-lesson="4a">
+      <button class="btn btn-practice" data-lesson="4a" onclick="enterPracticeMode('4a')">&#9998; Fill in the Blanks</button>
+      <button class="btn btn-answer" data-lesson="4a" onclick="showAnswers('4a')">See Answers</button>
+      <button class="btn btn-reset" data-lesson="4a" onclick="resetAll('4a')">Reset</button>
+    </div>
+    <div class="score-banner" id="scoreBanner-4a"></div>
+    <div class="exercise" data-lesson="4a">
+      <div class="exercise-subtitle">C19T3P2</div>
+      <p class="exercise-instruction">Listen and complete the sentences below.</p>
+      <div class="dialogue">
+        <div class="q-separator"><span>Q11</span></div>
+        <div class="line">
+          First of all, there's a very special event called Superheroes. This is a chance for
+          <span class="blank-wrap" data-lesson="4a" data-answer="deaf"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          children to share their reading experiences with author Madeleine Gordon, who is herself hearing impaired.
+        </div>
+        <div class="q-separator"><span>Q12</span></div>
+        <div class="line" style="margin-top:12px">
+          'Just do it' is a practical workshop led by the well-known illustrator Mark Keane. He'll take participants on a magical journey to faraway lands with an opportunity for aspiring actors to do some
+          <span class="blank-wrap" data-lesson="4a" data-answer="role"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          <span class="blank-wrap" data-lesson="4a" data-answer="play"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>.
+        </div>
+        <div class="q-separator"><span>Q13</span></div>
+        <div class="line" style="margin-top:12px">
+          'Count on me' is an inspiring and entertaining look at the issues of friendship for
+          <span class="blank-wrap" data-lesson="4a" data-answer="13"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;</span></span>&ndash;<span class="blank-wrap" data-lesson="4a" data-answer="14"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;</span></span>-year-<span class="blank-wrap" data-lesson="4a" data-answer="olds"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>.
+          It looks at some of the friendships described in popular books and asks participants to compare these with their own experiences.
+        </div>
+        <div class="q-separator"><span>Q14</span></div>
+        <div class="line" style="margin-top:12px">
+          'Speak up' is part of a series of workshops on the subject of mental health. This is a creative writing workshop encouraging children to
+          <span class="blank-wrap" data-lesson="4a" data-answer="describe"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          situations where young people experience
+          <span class="blank-wrap" data-lesson="4a" data-answer="loneliness"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>.
+          A recent survey revealed that children can be lonely even when they're at home with their families.
+        </div>
+        <div class="q-separator"><span>Q15</span></div>
+        <div class="line" style="margin-top:12px">
+          'Jump for joy', as many of you will know, is the heart-warming, best-selling story by Nina Karan about a young girl's trip to visit her relatives in India. It recently received the
+          <span class="blank-wrap" data-lesson="4a" data-answer="gold"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          <span class="blank-wrap" data-lesson="4a" data-answer="medal"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          at the Waterford Awards. Nina will get children to celebrate the word 'joy' by writing a poem.
+        </div>
+        <div class="q-separator"><span>Q16</span></div>
+        <div class="line" style="margin-top:12px">
+          'Sticks and stones' is the beautifully illustrated picture book for young readers about a
+          <span class="blank-wrap" data-lesson="4a" data-answer="community"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          who organise an African-Caribbean festival to help local children
+          <span class="blank-wrap" data-lesson="4a" data-answer="learn"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          about their Jamaican
+          <span class="blank-wrap" data-lesson="4a" data-answer="roots"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>.
+          This will be a musical event where children will have the chance to play steel drums. This is bound to be very popular, so please book as soon as possible.
+        </div>
+      </div>
+      <div class="answer-summary" id="answerSummary-4a">
+        <h4>Answer Key</h4>
+        <div class="answer-grid">
+          <div class="answer-item"><strong>11</strong> C</div>
+          <div class="answer-item"><strong>12</strong> D</div>
+          <div class="answer-item"><strong>13</strong> F</div>
+          <div class="answer-item"><strong>14</strong> G</div>
+          <div class="answer-item"><strong>15</strong> B</div>
+          <div class="answer-item"><strong>16</strong> H</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Exercise 4b: C17T3P2 -->
+    <span id="ex-4b" class="anchor-target"></span>
+    <div class="audio-note"><audio controls controlsList="nodownload" data-lesson="4b" data-start="282" data-end="410">
+        <source src="audio/17-3-2.mp3" type="audio/mpeg">
+      </audio>
+    </div>
+    <div class="toolbar" data-lesson="4b">
+      <button class="btn btn-practice" data-lesson="4b" onclick="enterPracticeMode('4b')">&#9998; Fill in the Blanks</button>
+      <button class="btn btn-answer" data-lesson="4b" onclick="showAnswers('4b')">See Answers</button>
+      <button class="btn btn-reset" data-lesson="4b" onclick="resetAll('4b')">Reset</button>
+    </div>
+    <div class="score-banner" id="scoreBanner-4b"></div>
+    <div class="exercise" data-lesson="4b">
+      <div class="exercise-subtitle">C17T3P2</div>
+      <p class="exercise-instruction">Listen and complete the sentences below.</p>
+      <div class="dialogue">
+        <div class="q-separator"><span>Q16</span></div>
+        <div class="line">
+          For example, Spanish. We have a specialist teacher coming in every Thursday to give a basic introduction to the language through games and songs. She does two sessions: one for the
+          <span class="blank-wrap" data-lesson="4b" data-answer="over"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          <span class="blank-wrap" data-lesson="4b" data-answer="8s"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          and one for the
+          <span class="blank-wrap" data-lesson="4b" data-answer="younger"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          children. This is the only activity which we have to make an
+          <span class="blank-wrap" data-lesson="4b" data-answer="extra"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          <span class="blank-wrap" data-lesson="4b" data-answer="charge"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          for &mdash; but it's well worth it.
+        </div>
+        <div class="q-separator"><span>Q17</span></div>
+        <div class="line" style="margin-top:12px">
+          Once a week the children have the opportunity to do some music. We're very lucky that one of our staff is a member of a folk band. On Mondays, she teaches singing and percussion to groups of children. We do
+          <span class="blank-wrap" data-lesson="4b" data-answer="rely"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          on
+          <span class="blank-wrap" data-lesson="4b" data-answer="parental"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          <span class="blank-wrap" data-lesson="4b" data-answer="support"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          for this, so if any of you sing or play an instrument and would be prepared to help out at these sessions, we'd be delighted.
+        </div>
+        <div class="q-separator"><span>Q18</span></div>
+        <div class="line" style="margin-top:12px">
+          Painting continues to be one of the most popular activities. To begin with we weren't keen on offering this because of the extra mess involved, but
+          <span class="blank-wrap" data-lesson="4b" data-answer="children"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          kept
+          <span class="blank-wrap" data-lesson="4b" data-answer="asking"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          if they could do some art and so we finally gave in. Art is great for helping the children to relax after working hard at school all day.
+        </div>
+        <div class="q-separator"><span>Q19</span></div>
+        <div class="line" style="margin-top:12px">
+          Yoga is something that we've been meaning to introduce for some time but
+          <span class="blank-wrap" data-lesson="4b" data-answer="haven't"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          been able to find anyone
+          <span class="blank-wrap" data-lesson="4b" data-answer="available"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          to teach it &mdash;
+          <span class="blank-wrap" data-lesson="4b" data-answer="until"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          <span class="blank-wrap" data-lesson="4b" data-answer="now"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          that is. So we'll see how this goes. Hopefully, children will benefit in all sorts of ways from this.
+        </div>
+        <div class="q-separator"><span>Q20</span></div>
+        <div class="line" style="margin-top:12px">
+          Cooking is another popular activity. They make a different sort of cake, or pizza or bread each week. Although the younger children love doing it, we found that the mess was just too much, so we've decided to
+          <span class="blank-wrap" data-lesson="4b" data-answer="restrict"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          this to the
+          <span class="blank-wrap" data-lesson="4b" data-answer="over"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          <span class="blank-wrap" data-lesson="4b" data-answer="8s"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;</span></span>,
+          as they are better able to clean up after themselves.
+        </div>
+      </div>
+      <div class="answer-summary" id="answerSummary-4b">
+        <h4>Answer Key</h4>
+        <div class="answer-grid">
+          <div class="answer-item"><strong>16</strong> E</div>
+          <div class="answer-item"><strong>17</strong> D</div>
+          <div class="answer-item"><strong>18</strong> G</div>
+          <div class="answer-item"><strong>19</strong> F</div>
+          <div class="answer-item"><strong>20</strong> C</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Exercise 4c: C19T4P2 -->
+    <span id="ex-4c" class="anchor-target"></span>
+    <div class="audio-note"><audio controls controlsList="nodownload" data-lesson="4c" data-start="204" data-end="303">
+        <source src="audio/19-4-2.mp3" type="audio/mpeg">
+      </audio>
+    </div>
+    <div class="toolbar" data-lesson="4c">
+      <button class="btn btn-practice" data-lesson="4c" onclick="enterPracticeMode('4c')">&#9998; Fill in the Blanks</button>
+      <button class="btn btn-answer" data-lesson="4c" onclick="showAnswers('4c')">See Answers</button>
+      <button class="btn btn-reset" data-lesson="4c" onclick="resetAll('4c')">Reset</button>
+    </div>
+    <div class="score-banner" id="scoreBanner-4c"></div>
+    <div class="exercise" data-lesson="4c">
+      <div class="exercise-subtitle">C19T4P2</div>
+      <p class="exercise-instruction">Listen and complete the sentences below.</p>
+      <div class="dialogue">
+        <div class="q-separator"><span>Q15</span></div>
+        <div class="line">
+          Ceri, for example, joined the club two years ago at the age of 40. She'd always
+          <span class="blank-wrap" data-lesson="4c" data-answer="enjoyed"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          running at school but
+          <span class="blank-wrap" data-lesson="4c" data-answer="wasn't"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          <span class="blank-wrap" data-lesson="4c" data-answer="sure"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          if she'd be
+          <span class="blank-wrap" data-lesson="4c" data-answer="able"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          to do it. She was
+          <span class="blank-wrap" data-lesson="4c" data-answer="worried"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          about being left behind and being the slowest runner. But she says she was made to feel so welcome she soon forgot all about that.
+        </div>
+        <div class="q-separator"><span>Q16</span></div>
+        <div class="line" style="margin-top:12px">
+          James had always
+          <span class="blank-wrap" data-lesson="4c" data-answer="hated"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          the idea of running but a friend encouraged him to come along for a taster session and he hasn't looked back. He
+          <span class="blank-wrap" data-lesson="4c" data-answer="never"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          <span class="blank-wrap" data-lesson="4c" data-answer="misses"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          a training session despite having a really demanding job.
+        </div>
+        <div class="q-separator"><span>Q17</span></div>
+        <div class="line" style="margin-top:12px">
+          Leo was worried about having to commit himself to training sessions every week and wasn't sure he'd be able to fit training into his
+          <span class="blank-wrap" data-lesson="4c" data-answer="busy"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          <span class="blank-wrap" data-lesson="4c" data-answer="schedule"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>.
+          But after experiencing a lot of stress at work he came along to us and gave it a go. Now he says he feels much more relaxed and he looks forward to his weekly run.
+        </div>
+        <div class="q-separator"><span>Q18</span></div>
+        <div class="line" style="margin-top:12px">
+          Mark is quite typical of our new members. He's
+          <span class="blank-wrap" data-lesson="4c" data-answer="never"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          <span class="blank-wrap" data-lesson="4c" data-answer="considered"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          himself to be a sporty person and it was only when he retired that he decided to take up the challenge of trying to run 5 kilometres. It took him
+          <span class="blank-wrap" data-lesson="4c" data-answer="months"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          to
+          <span class="blank-wrap" data-lesson="4c" data-answer="find"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          the
+          <span class="blank-wrap" data-lesson="4c" data-answer="courage"><span class="blank-dash">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          to contact us but felt reassured immediately as there were other people his age who were only just taking up running for the first time.
+        </div>
+      </div>
+      <div class="answer-summary" id="answerSummary-4c">
+        <h4>Answer Key</h4>
+        <div class="answer-grid">
+          <div class="answer-item"><strong>15</strong> A</div>
+          <div class="answer-item"><strong>16</strong> B</div>
+          <div class="answer-item"><strong>17</strong> C</div>
+          <div class="answer-item"><strong>18</strong> A</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="footer">6.0 IELTS Listening &middot; Intensive Listening Workbook</div>
+</div>
+
+<script>
+const state = {};
+
+function ensureState(id) {
+  if (!state[id]) state[id] = { practice: false, answersShown: false };
+  return state[id];
+}
+
+function norm(s) {
+  return (s || '').trim().toLowerCase().replace(/\s+/g, ' ');
+}
+
+function getBlanks(id) {
+  return document.querySelectorAll('.blank-wrap[data-lesson="' + id + '"]');
+}
+
+function enterPracticeMode(id) {
+  const s = ensureState(id);
+  if (s.practice) return;
+  s.practice = true;
+  s.answersShown = false;
+
+  const btnPractice = document.querySelector('.btn-practice[data-lesson="' + id + '"]');
+  const btnAnswer = document.querySelector('.btn-answer[data-lesson="' + id + '"]');
+  if (btnPractice) { btnPractice.classList.add('active'); btnPractice.innerHTML = '&#9998; Practice Mode Active'; }
+  if (btnAnswer) { btnAnswer.classList.remove('showing'); btnAnswer.innerHTML = 'See Answers'; }
+
+  const summary = document.getElementById('answerSummary-' + id);
+  const banner = document.getElementById('scoreBanner-' + id);
+  if (summary) summary.classList.remove('show');
+  if (banner) banner.classList.remove('show', 'perfect', 'good', 'practice');
+
+  getBlanks(id).forEach(wrap => {
+    const answer = wrap.dataset.answer;
+    const qnumEl = wrap.querySelector('.qnum');
+    const input = document.createElement('input');
+    input.type = 'text';
+    input.className = 'blank-input';
+    input.style.width = Math.max(answer.length * 13 + 16, 56) + 'px';
+    input.setAttribute('autocomplete', 'off');
+    input.setAttribute('spellcheck', 'false');
+    if (wrap.dataset.userInput) input.value = wrap.dataset.userInput;
+
+    input.addEventListener('input', function() {
+      const val = this.value;
+      wrap.dataset.userInput = val;
+      val.trim() === '' ? this.classList.remove('correct','wrong')
+        : norm(val) === norm(answer) ? (this.classList.add('correct'), this.classList.remove('wrong'))
+        : (this.classList.add('wrong'), this.classList.remove('correct'));
+    });
+
+    wrap.innerHTML = '';
+    wrap.appendChild(input);
+    if (qnumEl) wrap.appendChild(qnumEl);
+
+    if (!wrap.dataset.focused) {
+      setTimeout(() => input.focus({ preventScroll: true }), 100);
+      wrap.dataset.focused = '1';
+    }
+  });
+}
+
+function showAnswers(id) {
+  const s = ensureState(id);
+  s.answersShown = true;
+
+  const summary = document.getElementById('answerSummary-' + id);
+  if (summary) summary.classList.add('show');
+
+  const btnAnswer = document.querySelector('.btn-answer[data-lesson="' + id + '"]');
+  if (btnAnswer) { btnAnswer.classList.add('showing'); btnAnswer.innerHTML = 'Hide Answers'; }
+
+  let total = 0, correct = 0;
+
+  getBlanks(id).forEach(wrap => {
+    const answer = wrap.dataset.answer;
+    const qnumEl = wrap.querySelector('.qnum');
+    const input = wrap.querySelector('.blank-input');
+    const userVal = input ? input.value : (wrap.dataset.userInput || '');
+    total++;
+
+    if (s.practice && userVal.trim() && norm(userVal) === norm(answer)) {
+      correct++;
+      wrap.innerHTML = '';
+      const span = document.createElement('span');
+      span.className = 'blank-revealed';
+      span.textContent = answer;
+      wrap.appendChild(span);
+      if (qnumEl) wrap.appendChild(qnumEl);
+    } else if (s.practice && userVal.trim() && norm(userVal) !== norm(answer)) {
+      wrap.innerHTML = '';
+      const span = document.createElement('span');
+      span.className = 'blank-wrong-revealed';
+      span.innerHTML = '<span class="user-answer">' + escapeHTML(userVal) + '</span><span class="arrow">&rarr;</span><span class="correct-answer">' + answer + '</span>';
+      wrap.appendChild(span);
+      if (qnumEl) wrap.appendChild(qnumEl);
+    } else {
+      wrap.innerHTML = '';
+      const span = document.createElement('span');
+      span.className = 'blank-revealed';
+      span.textContent = answer;
+      wrap.appendChild(span);
+      if (qnumEl) wrap.appendChild(qnumEl);
+    }
+  });
+
+  if (s.practice) {
+    const banner = document.getElementById('scoreBanner-' + id);
+    if (banner) {
+      banner.classList.add('show');
+      banner.classList.remove('perfect','good','practice');
+      if (total > 0 && correct === total) {
+        banner.className = 'score-banner show perfect';
+        banner.textContent = 'All correct — ' + correct + ' / ' + total;
+      } else if (correct >= total * 0.7) {
+        banner.className = 'score-banner show good';
+        banner.textContent = correct + ' / ' + total + ' correct — nearly there.';
+      } else {
+        banner.className = 'score-banner show practice';
+        banner.textContent = correct + ' / ' + total + ' correct — listen again and retry.';
+      }
+    }
+  }
+}
+
+function resetAll(id) {
+  const s = ensureState(id);
+  s.practice = false;
+  s.answersShown = false;
+
+  const btnPractice = document.querySelector('.btn-practice[data-lesson="' + id + '"]');
+  const btnAnswer = document.querySelector('.btn-answer[data-lesson="' + id + '"]');
+  if (btnPractice) { btnPractice.classList.remove('active'); btnPractice.innerHTML = '&#9998; Fill in the Blanks'; }
+  if (btnAnswer) { btnAnswer.classList.remove('showing'); btnAnswer.innerHTML = 'See Answers'; }
+
+  const summary = document.getElementById('answerSummary-' + id);
+  const banner = document.getElementById('scoreBanner-' + id);
+  if (summary) summary.classList.remove('show');
+  if (banner) banner.classList.remove('show','perfect','good','practice');
+
+  getBlanks(id).forEach(wrap => {
+    const answer = wrap.dataset.answer;
+    const qnumEl = wrap.querySelector('.qnum');
+    wrap.innerHTML = '';
+    wrap.dataset.userInput = '';
+    wrap.dataset.focused = '';
+    const dash = document.createElement('span');
+    dash.className = 'blank-dash';
+    dash.innerHTML = '&nbsp;'.repeat(Math.max(answer.length + 2, 5));
+    dash.style.minWidth = Math.max(answer.length * 10 + 8, 56) + 'px';
+    wrap.appendChild(dash);
+    if (qnumEl) wrap.appendChild(qnumEl);
+  });
+}
+
+function escapeHTML(str) {
+  const div = document.createElement('div');
+  div.textContent = str;
+  return div.innerHTML;
+}
+
+function toggleLesson(btn) {
+  const subs = btn.nextElementSibling;
+  const arrow = btn.querySelector('.arrow');
+  subs.classList.toggle('open');
+  arrow.classList.toggle('open');
+}
+
+document.querySelectorAll('.sub-link').forEach(link => {
+  link.addEventListener('click', function() {
+    document.querySelectorAll('.sub-link').forEach(l => l.classList.remove('active'));
+    this.classList.add('active');
+  });
+});
+
+function initAudioTimeRanges() {
+  document.querySelectorAll('audio[data-start], audio[data-end]').forEach(audio => {
+    const start = parseFloat(audio.dataset.start) || 0;
+    const end = parseFloat(audio.dataset.end) || Infinity;
+
+    function seekToStart() {
+      if (audio.readyState >= 2 && audio.currentTime < start) {
+        audio.currentTime = start;
+      }
+    }
+
+    audio.addEventListener('loadedmetadata', seekToStart);
+    audio.addEventListener('canplay', seekToStart);
+    seekToStart();
+
+    audio.addEventListener('timeupdate', () => {
+      if (audio.currentTime >= end) {
+        audio.pause();
+        audio.currentTime = start;
+      }
+    });
+
+    audio.addEventListener('seeked', () => {
+      if (audio.currentTime < start) audio.currentTime = start;
+      if (audio.currentTime >= end) {
+        audio.pause();
+        audio.currentTime = start;
+      }
+    });
+
+    audio.addEventListener('play', () => {
+      if (audio.currentTime < start || audio.currentTime >= end) {
+        audio.currentTime = start;
+      }
+    });
+  });
+}
+document.addEventListener('DOMContentLoaded', initAudioTimeRanges);
+</script>
+</body>
+</html>
